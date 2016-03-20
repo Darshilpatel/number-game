@@ -23,12 +23,19 @@ public class MainActivity extends AppCompatActivity {
         String guessedNumberString = guessedNumber.getText().toString();
         int convertedNumber = Integer.parseInt(guessedNumberString);
         String userMessage = "";
-        if (convertedNumber > randomNumber){
+
+        if (guessedNumber.getText().toString().isEmpty()){
+            userMessage ="Enter a number";
+        }
+        else if (convertedNumber > randomNumber){
            userMessage = "Too high";
         } else if (convertedNumber < randomNumber){
            userMessage = "Too low";
         } else {
             userMessage = "Correct!";
+            Random randomGenerator = new Random();
+            randomNumber = randomGenerator.nextInt(21);
+
         }
 
         Toast.makeText(getApplicationContext(), userMessage , Toast.LENGTH_LONG).show();
