@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -21,9 +22,16 @@ public class MainActivity extends AppCompatActivity {
 
         String guessedNumberString = guessedNumber.getText().toString();
         int convertedNumber = Integer.parseInt(guessedNumberString);
+        String userMessage = "";
+        if (convertedNumber > randomNumber){
+           userMessage = "Too high";
+        } else if (convertedNumber < randomNumber){
+           userMessage = "Too low";
+        } else {
+            userMessage = "Correct!";
+        }
 
-
-        System.out.println("Working");
+        Toast.makeText(getApplicationContext(), userMessage , Toast.LENGTH_LONG).show();
     }
 
 
