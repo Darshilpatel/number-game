@@ -8,12 +8,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    int randomNumber;
 
     public void checkGuess (View view){
+        EditText guessedNumber = (EditText) findViewById(R.id.guessedNumber);
+
+        String guessedNumberString = guessedNumber.getText().toString();
+        int convertedNumber = Integer.parseInt(guessedNumberString);
 
 
         System.out.println("Working");
@@ -27,12 +34,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Random randomGenerator = new Random();
+        randomNumber = randomGenerator.nextInt(21);
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+
         return true;
     }
 
